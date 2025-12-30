@@ -32,6 +32,7 @@ make generate
 ℹ️ You can also create a new file in the `./tests` folder manually.
 
 ## Task
+Please try to do the following.
 
 #### Task 1: Add a New Test
 
