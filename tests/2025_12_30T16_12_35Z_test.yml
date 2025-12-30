@@ -1,0 +1,244 @@
+---
+name: CaaS - CreateOrder API
+description: Tests that an order is created successfully
+requests:
+  create_order:
+    method: post
+    url: "{{env:CAAS_BASE_URL}}/orders"
+    headers: 
+      x-api-key: "{{env:CAAS_API_KEY}}"
+    body:
+      patient:
+        id: hhPati3nt2
+        gender: male
+        givenName: Test
+        familyName: Patient HH
+        phoneNumber: "+4471118973247"
+        email: himspatient2@testemail.com
+        dateOfBirth: '1970-10-30'
+        verification: document-checked
+        registeredAddress:
+          line1: Flat 19 Mansion House
+          line2: 9 Super Street
+          city: Brighton
+          state: Texas
+          postalCode: N103LH
+          countryCode: GB
+        registeredProvider:
+          internalId: 439764b7-eef6-4edd-bbba-b635e2ea2861
+          clinicName: RITCHIE STREET GROUP PRACTICE
+          phoneNumber: "+4471118973247"
+          email: hello@world.com
+          address:
+            line1: Flat 19 Mansion House
+            line2: 9 Super Street
+            city: Brighton
+            state: Texas
+            postalCode: N18YZ
+            countryCode: GB
+      order:
+        id: "{{gen:uuid}}"
+        type: new
+        serviceId: 1006968
+        productId: 9902557
+        shipping:
+          priority: urgent
+          address:
+            line1: Flat 19 Mansion House
+            line2: 9 Super Street
+            city: Brighton
+            state: Texas
+            postalCode: N1 8YZ
+            countryCode: GB
+      assessment:
+        questionnaireResponse:
+          id: '99123765'
+          version: '6'
+          answers:
+          - id: WL_ASSIGNED_SEX
+            text: 'What was your sex assigned at birth? '
+            answer:
+              entryTime: '2025-10-21T10:20:30Z'
+              valueType: choice
+              values:
+              - code: common-female
+                text: Female
+          - id: WL_IDENTIFY_AS
+            text: 'Do you identify as a man? '
+            answer:
+              entryTime: '2025-10-21T10:20:30Z'
+              valueType: choice
+              values:
+              - code: common-yes
+                text: 'Yes'
+          - id: WL_ETHNICITY
+            text: 'How would you describe your ethnicity? '
+            answer:
+              entryTime: '2025-10-21T10:20:30Z'
+              valueType: choice
+              values:
+              - code: i-prefer-not-to-answer
+                text: I prefer not to answer
+          - id: WL_HEIGHT_CM
+            text: "What is your height? \nPlease enter your current height in centimeters"
+            answer:
+              entryTime: '2025-09-30T10:20:30Z'
+              valueType: quantity
+              values:
+              - code: '172.1'
+                text: ''
+          - id: WL_WEIGHT_KG
+            text: "What is your  \ncurrent \n weight? \nPlease enter your current weight
+              in kilograms (kg)"
+            answer:
+              entryTime: '2025-09-30T10:20:30Z'
+              valueType: quantity
+              values:
+              - code: '112.3'
+                text: ''
+          - id: WL_GOAL_WEIGHT_KG
+            text: "What is your  \ngoal \n weight? \nPlease enter your desired weight in
+              kilograms (kg)"
+            answer:
+              entryTime: '2025-09-30T10:20:30Z'
+              valueType: quantity
+              values:
+              - code: '90.0'
+                text: ''
+          - id: WL_IS_CURRENT_WEIGHT_THE_HIGHEST_BOOLEAN_CHECK
+            text: Is your current weight the most you have ever weighed?
+            answer:
+              entryTime: '2025-10-21T10:20:30Z'
+              valueType: choice
+              values:
+              - code: common-yes
+                text: 'Yes'
+          - id: WL_MEDICAL_CONDITIONS
+            text: Do you have any medical conditions or chronic diseases?
+            answer:
+              entryTime: '2025-10-21T10:20:30Z'
+              valueType: choice
+              values:
+              - code: common-no
+                text: 'No'
+          - id: WL_MENTAL_HEALTH_CONDITION
+            text: Do you have any medical conditions or chronic diseases?
+            answer:
+              entryTime: '2025-10-21T10:20:30Z'
+              valueType: choice
+              values:
+              - code: common-no
+                text: 'No'
+          - id: WL_MEDICAL_PROCEDURES
+            text: 'Have you ever had any surgeries or medical procedures? '
+            answer:
+              entryTime: '2025-10-21T10:20:30Z'
+              valueType: choice
+              values:
+              - code: common-no
+                text: 'No'
+          - id: WL_TAKEN_WEIGHT_LOSS_MEDICATION
+            text: "Are you currently or have you ever taken a weight loss medication? \nPlease
+              include experience with semaglutide, tirzepatide, liraglutide, Saxenda®, Ozempic®,
+              Wegovy®, Mounjaro®, or Zepbound®."
+            answer:
+              entryTime: '2025-10-21T10:20:30Z'
+              valueType: choice
+              values:
+              - code: WL_CURRENTLY_TAKING_MEDICATION
+                text: I am currently taking a weight loss medication
+          - id: WL_SUPPLEMENTS_OR_MEDS
+            text: 'Do you currently take any medications or supplements? '
+            answer:
+              entryTime: '2025-10-21T10:20:30Z'
+              valueType: choice
+              values:
+              - code: common-no
+                text: 'No'
+          - id: WL_ALLERGIES
+            text: 'Do you have any allergies? '
+            answer:
+              entryTime: '2025-10-21T10:20:30Z'
+              valueType: choice
+              values:
+              - code: common-no
+                text: 'No'
+          - id: WL_ALCOHOLIC_DRINKS
+            text: "How often do you consume  5 or more alcoholic drinks in one occasion?
+              \nSometimes alcohol can impact the effectiveness of certain medications and
+              it’s important for your provider to know to give you the best guidance."
+            answer:
+              entryTime: '2025-10-21T10:20:30Z'
+              valueType: choice
+              values:
+              - code: wl-alcoholic-drinks-never
+                text: Never
+          - id: WL_DRUG_USE
+            text: "Have you taken any of the following recreational drugs in the past 6
+              months? \nWe ask this question so your provider can have a complete picture
+              of your current health and determine which treatment might be right for you."
+            answer:
+              entryTime: '2025-10-21T10:20:30Z'
+              valueType: choice
+              values:
+              - code: no-use-of-drugs
+                text: No, none of these
+          - id: WL_FAMILY_MEDICAL_CONDITIONS
+            text: "Have you or a family member ever been diagnosed with any of the following
+              conditions? \nWe ask because some conditions can determine which treatment
+              types are right for you."
+            answer:
+              entryTime: '2025-10-21T10:20:30Z'
+              valueType: choice
+              values:
+              - code: no-history-of-family-conditions
+                text: No, none of these
+          - id: WL_FAMILY_UNDER_40_DECEASED
+            text: Has a close family member under the age of 40 passed away unexpectedly?
+            answer:
+              entryTime: '2025-10-21T10:20:30Z'
+              valueType: choice
+              values:
+              - code: common-no
+                text: 'No'
+          - id: WL_OTHER_HEALTH_CONDITION
+            text: "Have you ever experienced any of these symptoms? \nThis helps your provider
+              better understand your current health so they can recommend the best treatment
+              for you."
+            answer:
+              entryTime: '2025-10-21T10:20:30Z'
+              valueType: choice
+              values:
+              - code: no-health-conditions
+                text: No, none of these
+          - id: WL_EATING_DISORDERS
+            text: "Have you ever experienced any of these symptoms? \nThis helps your provider
+              better understand your current health so they can recommend the best treatment
+              for you."
+            answer:
+              entryTime: '2025-10-21T10:20:30Z'
+              valueType: choice
+              values:
+              - code: no-reported-eating-disorders
+                text: No, I have not experienced any of these
+          - id: GP-COMMS-CONSENT
+            text: Do you consent to us discussing your treatment with your GP if approved?
+              Even if you answer yes, we won't reach out unless you ask us to.
+            answer:
+              entryTime: '2025-10-21T10:20:30Z'
+              valueType: choice
+              values:
+              - code: common-yes
+                text: 'Yes'
+        media:
+        - id: adfsaf
+          url: https://res.cloudinary.com/zava-www-uk/image/upload/v1748882182/uk/misc/homepage/svf9yrbvjj13tyhtsnv9.png
+          label: scale picture
+assertions:
+  - property: create_order
+    type: status_code
+    value: 201
+  - property: create_order.status
+    type: is_equals
+    value: new
+
