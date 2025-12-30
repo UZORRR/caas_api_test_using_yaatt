@@ -37,10 +37,7 @@ Please try to do the following.
 #### Task 1: Add a New Test
 
 * Create a new test file in the `./tests` directory.
-* Add at least;
-   * one request,
-   * one assertion
-
+* Add at least one request, and one assertion.
 * Run the tests and confirm your new test is executed.
 * Review the output.
 
