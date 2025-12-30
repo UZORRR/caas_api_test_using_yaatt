@@ -1,4 +1,4 @@
-name: CaaS - CreateOrder API - Tests that an order is created successfully
+name: CaaS - CreateOrder API - Cannot create order - Invalid patient verification
 requests:
   create_order:
     method: post
@@ -14,7 +14,7 @@ requests:
         phoneNumber: "+4471118973247"
         email: himspatient2@testemail.com
         dateOfBirth: '1970-10-30'
-        verification: document-checked
+        verification: not-verified
         registeredAddress:
           line1: Flat 19 Mansion House
           line2: 9 Super Street
@@ -35,7 +35,7 @@ requests:
             postalCode: N18YZ
             countryCode: GB
       order:
-        id: "{{gen:uuid}}"
+        id: "{{env::uuid}}"
         type: new
         serviceId: 1006968
         productId: 9902557
@@ -232,11 +232,15 @@ requests:
         - id: adfsaf
           url: https://res.cloudinary.com/zava-www-uk/image/upload/v1748882182/uk/misc/homepage/svf9yrbvjj13tyhtsnv9.png
           label: scale picture
+
 assertions:
   - property: create_order
     type: status_code
-    value: 201
-  - property: create_order.status
+    value: 422
+  - property: create_order.code
     type: is_equals
-    value: new
+    value: 422
+  - property: create_order.message
+    type: is_equals
+    value: PatientVerificationException
 
