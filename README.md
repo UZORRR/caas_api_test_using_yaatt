@@ -20,7 +20,6 @@ make build
 ```sh
 make test
 ```
-```
 
 ℹ️ These runs the tests in your tests folder.
 
