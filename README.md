@@ -35,8 +35,7 @@ make generate
 Please try to do the following.
 
 #### Task 1: Review the existing test files
-* There are some test files in the the `./tests` folder. 
-* Have a quick breeze through to familiarise yourself with the format.
+* Have a quick breeze through to the files in the `./tests` folder and their content to familiarise yourself with the format.
 
 #### Task 2: Add a New Test
 
