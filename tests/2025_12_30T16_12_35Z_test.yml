@@ -1,4 +1,4 @@
-name: CaaS - CreateOrder API - Tests that an order is created successfully
+name: CaaS - CreateOrder API - Order created successfully
 requests:
   create_order:
     method: post
@@ -239,4 +239,7 @@ assertions:
   - property: create_order.status
     type: is_equals
     value: new
+  - property: create_order.patientId
+    type: is_equals
+    value: hhPati3nt2
 

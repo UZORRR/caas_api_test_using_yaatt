@@ -1,4 +1,4 @@
-name: CaaS - CreateOrder API - Invalid patient verification
+name: CaaS - CreateOrder API - Order already exists
 requests:
   create_order:
     method: post
@@ -14,7 +14,7 @@ requests:
         phoneNumber: "+4471118973247"
         email: himspatient2@testemail.com
         dateOfBirth: '1970-10-30'
-        verification: not-verified
+        verification: document-checked
         registeredAddress:
           line1: Flat 19 Mansion House
           line2: 9 Super Street
@@ -35,7 +35,7 @@ requests:
             postalCode: N18YZ
             countryCode: GB
       order:
-        id: "{{env::uuid}}"
+        id: hhorder_75468643-dc30-4b69-8b2c-79158de0d999
         type: new
         serviceId: 1006968
         productId: 9902557
@@ -236,11 +236,7 @@ requests:
 assertions:
   - property: create_order
     type: status_code
-    value: 422
-  - property: create_order.code
+    value: 200
+  - property: create_order.patientId
     type: is_equals
-    value: 422
-  - property: create_order.message
-    type: is_equals
-    value: PatientVerificationException
-
+    value: hhPati3nt2
