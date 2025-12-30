@@ -34,6 +34,9 @@ make generate
 ## Task
 Please try to do the following.
 
+#### Task 1: Review the existing test files
+There are some test files in the the `./tests` folder. Have a quick breeze through and get a general understanding what they look like.
+
 #### Task 1: Add a New Test
 
 * Create a new test file in the `./tests` directory.
