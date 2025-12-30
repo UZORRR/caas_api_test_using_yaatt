@@ -4,8 +4,8 @@ API tests for CaaS written to be run using [iamuzorr/yaatt](https://hub.docker.c
 
 ## Requirement
 
-* Create an .env file in the root directory.
-* Add variables `CAAS_BASE_URL` and `CAAS_API_KEY`
+* Docker installed.
+* An `.env` file in the root directory with variables `CAAS_BASE_URL` and `CAAS_API_KEY`
 
 ## Usage
 
