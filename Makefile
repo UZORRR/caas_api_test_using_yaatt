@@ -1,4 +1,4 @@
-TEST_BASE_IMAGE=iamuzorr/yaatt:latest
+BASE_IMAGE=iamuzorr/yaatt:latest
 ROOT_DIR=$(shell pwd)
 
 .SILENT:
@@ -19,11 +19,11 @@ help:
 
 ## Pull test image
 build:
-	docker pull $(TEST_BASE_IMAGE)
+	docker pull $(BASE_IMAGE)
 
 ## Run all tests
 test: 
-	docker run --env-file $(ROOT_DIR)/.env -v $(ROOT_DIR)/tests:/app/tests -t $(TEST_BASE_IMAGE)
+	docker run --env-file $(ROOT_DIR)/.env -v $(ROOT_DIR)/tests:/app/tests -t $(BASE_IMAGE)
 
 generate:
-	docker run -v $(ROOT_DIR)/tests:/app/tests -t $(TEST_BASE_IMAGE) bun run generate
+	docker run -v $(ROOT_DIR)/tests:/app/tests -t $(BASE_IMAGE) bun run generate
