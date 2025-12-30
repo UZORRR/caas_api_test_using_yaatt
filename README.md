@@ -37,14 +37,14 @@ Please try to do the following.
 #### Task 1: Review the existing test files
 There are some test files in the the `./tests` folder. Have a quick breeze through and get a general understanding what they look like.
 
-#### Task 1: Add a New Test
+#### Task 2: Add a New Test
 
 * Create a new test file in the `./tests` directory.
 * Add at least one request, and one assertion.
 * Run the tests and confirm your new test is executed.
 * Review the output.
 
-#### Task 2: Make a Test Fail (on purpose)
+#### Task 3: Make a Test Fail (on purpose)
 
 * Modify an existing test so that one assertion fails
 * Run the tests again
