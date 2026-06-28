@@ -1,4 +1,4 @@
-name: GetOrderStatus API - order status is not returned when order does not exist
+name: GetOrderStatus - order status is not returned when order does not exist
 description: GET /orders/{orderId}/status must return 404 when no order matches the specified ID
 requests:
   get_order_status:

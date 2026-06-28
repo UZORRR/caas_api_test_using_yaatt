@@ -1,0 +1,17 @@
+name: CancelOrder - forbidden with invalid API key
+description: POST /orders/{orderId}/cancel must return 403 when an invalid API key is provided
+requests:
+  cancel_order:
+    description: Cancel order with invalid API key
+    method: post
+    url: "{{env:CAAS_BASE_URL}}/orders/123/cancel"
+    headers:
+      x-api-key: dummy
+    body: {}
+assertions:
+  - property: cancel_order
+    type: status_code
+    value: 403
+  - property: cancel_order.message
+    type: is_equals
+    value: Forbidden

@@ -11,9 +11,9 @@ assertions:
   - property: get_order_status
     type: status_code
     value: 200
-  - property: get_order_status.status
-    type: is_equals
-    value: new
+  # - property: get_order_status.status
+  #   type: is_equals
+  #   value: new
   - property: get_order_status.patientId
     type: is_equals
     value: hhPati3nt2

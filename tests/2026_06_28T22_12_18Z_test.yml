@@ -1,0 +1,20 @@
+name: CancelOrder - order already dispensed
+description: POST /orders/{orderId}/cancel must return 409 when the order has already been dispensed (requires CAAS_ORDER_DISPENSED in .env)
+requests:
+  cancel_order:
+    description: Cancel an order that is already dispensed
+    method: post
+    url: "{{env:CAAS_BASE_URL}}/orders/{{env:CAAS_ORDER_DISPENSED}}/cancel"
+    headers:
+      x-api-key: "{{env:CAAS_API_KEY}}"
+    body: {}
+assertions:
+  - property: cancel_order
+    type: status_code
+    value: 409
+  - property: cancel_order.code
+    type: is_equals
+    value: 409
+  - property: cancel_order.message
+    type: is_equals
+    value: Order could not be canceled as it is already dispensed
