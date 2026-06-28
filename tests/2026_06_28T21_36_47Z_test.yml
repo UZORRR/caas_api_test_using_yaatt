@@ -1,0 +1,22 @@
+name: GetOrderStatus - order status is returned successfully
+description: GET /orders/{orderId}/status must return 200 with status, patientId, and orderId
+requests:
+  get_order_status:
+    description: Fetch status for existing order hh_order_1411b6b4-7d09-47f9-b01d-2b3e1a2422df
+    method: get
+    url: "{{env:CAAS_BASE_URL}}/orders/hh_order_1411b6b4-7d09-47f9-b01d-2b3e1a2422df/status"
+    headers:
+      x-api-key: "{{env:CAAS_API_KEY}}"
+assertions:
+  - property: get_order_status
+    type: status_code
+    value: 200
+  - property: get_order_status.status
+    type: is_equals
+    value: new
+  - property: get_order_status.patientId
+    type: is_equals
+    value: hhPati3nt2
+  - property: get_order_status.orderId
+    type: is_equals
+    value: hh_order_1411b6b4-7d09-47f9-b01d-2b3e1a2422df

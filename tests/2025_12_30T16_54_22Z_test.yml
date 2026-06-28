@@ -1,4 +1,4 @@
-name: CaaS - CreateOrder API - Invalid patient verification
+name: CreateOrder API - Invalid patient verification
 requests:
   create_order:
     method: post

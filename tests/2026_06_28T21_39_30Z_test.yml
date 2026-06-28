@@ -1,0 +1,19 @@
+name: GetOrderStatus API - order status is not returned when order does not exist
+description: GET /orders/{orderId}/status must return 404 when no order matches the specified ID
+requests:
+  get_order_status:
+    description: Fetch status for a non-existent order ID
+    method: get
+    url: "{{env:CAAS_BASE_URL}}/orders/hh_order_nonexistent-00000000-0000-0000-0000-000000000000/status"
+    headers:
+      x-api-key: "{{env:CAAS_API_KEY}}"
+assertions:
+  - property: get_order_status
+    type: status_code
+    value: 404
+  - property: get_order_status.code
+    type: is_equals
+    value: 404
+  - property: get_order_status.message
+    type: is_equals
+    value: Order does not exist

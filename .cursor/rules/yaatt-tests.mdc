@@ -1,0 +1,59 @@
+---
+description: Conventions for yaatt API test YAML files in tests/
+globs: tests/**/*.yml
+alwaysApply: false
+---
+
+# yaatt Test File Conventions
+
+## Required structure
+
+Every test file must have:
+
+- `name` — behavior-focused scenario name (e.g. `POST /orders returns 422 when verification is not-verified`)
+- `requests` — at least one HTTP request or delay step
+- `assertions` — at least one assertion
+
+Optional but recommended: `description` (one sentence explaining the scenario).
+
+## Environment variables
+
+Always use placeholders, never hardcode secrets:
+
+```yaml
+url: "{{env:CAAS_BASE_URL}}/orders"
+headers:
+  x-api-key: "{{env:CAAS_API_KEY}}"
+```
+
+## Creating new tests
+
+1. Copy the nearest existing test in `tests/` (payloads are large — do not write from scratch)
+2. Apply a minimal diff for the scenario under test
+3. Name the file `YYYY_MM_DDTHH_MM_SSZ_test.yml`
+4. Never leave empty or placeholder files in `tests/`
+
+## Assertions
+
+Minimum: status code + one response field that proves the scenario.
+
+```yaml
+assertions:
+  - property: create_order
+    type: status_code
+    value: 422
+  - property: create_order.message
+    type: is_equals
+    value: PatientVerificationException
+```
+
+- Property paths use the request key as root: `create_order.status`, not `status`
+- `is_not_empty` works on arrays only — not scalar fields like `id`
+
+## Validation and running
+
+```bash
+./scripts/validate-test.sh <file>.yml   # before running
+make test-one FILE=<file>.yml          # single test
+make test                              # full suite
+```

@@ -1,6 +1,7 @@
-name: CaaS - CreateOrder API - Order created successfully
+name: CreateOrder API - order created successfully
 requests:
   create_order:
+    description: Submit a valid CreateOrder payload for patient hhPati3nt2
     method: post
     url: "{{env:CAAS_BASE_URL}}/orders"
     headers: 

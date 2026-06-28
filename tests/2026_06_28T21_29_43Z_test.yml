@@ -1,6 +1,8 @@
-name: CreateOrder API - order already exists
+name: CreateOrder - fails when email is not provided
+description: POST /orders should return 400 when patient email is not provided
 requests:
   create_order:
+    description: Submit CreateOrder payload without patient email
     method: post
     url: "{{env:CAAS_BASE_URL}}/orders"
     headers: 
@@ -12,7 +14,6 @@ requests:
         givenName: Test
         familyName: Patient HH
         phoneNumber: "+4471118973247"
-        email: himspatient2@testemail.com
         dateOfBirth: '1970-10-30'
         verification: document-checked
         registeredAddress:
@@ -35,7 +36,7 @@ requests:
             postalCode: N18YZ
             countryCode: GB
       order:
-        id: hhorder_75468643-dc30-4b69-8b2c-79158de0d999
+        id: "{{gen:uuid}}"
         type: new
         serviceId: 1006968
         productId: 9902557
@@ -232,11 +233,11 @@ requests:
         - id: adfsaf
           url: https://res.cloudinary.com/zava-www-uk/image/upload/v1748882182/uk/misc/homepage/svf9yrbvjj13tyhtsnv9.png
           label: scale picture
-
 assertions:
   - property: create_order
     type: status_code
-    value: 200
-  - property: create_order.patientId
+    value: 400
+  - property: create_order.code
     type: is_equals
-    value: hhPati3nt2
+    value: 400
+

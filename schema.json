@@ -1,0 +1,229 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "yaatt test specification schema",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        },
+        "requests": {
+            "type": "object",
+            "patternProperties": {
+                ".": {
+                    "anyOf": [
+                        {
+                            "type": "object",
+                            "properties": {
+                                "description": {
+                                    "type": "string"
+                                },
+                                "method": {
+                                    "type": "string",
+                                    "enum": [
+                                        "get",
+                                        "delete"
+                                    ]
+                                },
+                                "url": {
+                                    "type": "string"
+                                },
+                                "headers": {
+                                    "type": "object"
+                                }
+                            },
+                            "required": [
+                                "method",
+                                "url"
+                            ],
+                            "additionalProperties": false
+                        },
+                        {
+                            "type": "object",
+                            "properties": {
+                                "description": {
+                                    "type": "string"
+                                },
+                                "method": {
+                                    "type": "string",
+                                    "enum": [
+                                        "post",
+                                        "put",
+                                        "patch"
+                                    ]
+                                },
+                                "url": {
+                                    "type": "string"
+                                },
+                                "headers": {
+                                    "type": "object"
+                                },
+                                "body": {
+                                    "type": "object"
+                                }
+                            },
+                            "required": [
+                                "method",
+                                "url",
+                                "body"
+                            ],
+                            "additionalProperties": false
+                        },
+                        {
+                            "type": "object",
+                            "properties": {
+                                "delay": {
+                                    "type": "number",
+                                    "description": "The number of seconds to delay by"
+                                }
+                            },
+                            "required": [
+                                "delay"
+                            ],
+                            "additionalProperties": false
+                        }
+                    ]
+                }
+            }
+        },
+        "assertions": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "anyOf": [
+                    {
+                        "type": "object",
+                        "properties": {
+                            "property": {
+                                "type": "string"
+                            },
+                            "type": {
+                                "type": "string",
+                                "enum": [
+                                    "is_not_empty"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "type",
+                            "property"
+                        ],
+                        "additionalProperties": false
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "enum": [
+                                    "is_equals"
+                                ]
+                            },
+                            "property": {
+                                "type": "string"
+                            },
+                            "value": {}
+                        },
+                        "required": [
+                            "type",
+                            "property",
+                            "value"
+                        ],
+                        "additionalProperties": false
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "property": {
+                                "type": "string"
+                            },
+                            "type": {
+                                "type": "string",
+                                "enum": [
+                                    "is_greater_than"
+                                ]
+                            },
+                            "value": {}
+                        },
+                        "required": [
+                            "type",
+                            "property",
+                            "value"
+                        ],
+                        "additionalProperties": false
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "property": {
+                                "type": "string"
+                            },
+                            "type": {
+                                "type": "string",
+                                "enum": [
+                                    "is_less_than"
+                                ]
+                            },
+                            "value": {}
+                        },
+                        "required": [
+                            "type",
+                            "property",
+                            "value"
+                        ],
+                        "additionalProperties": false
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "property": {
+                                "type": "string"
+                            },
+                            "type": {
+                                "type": "string",
+                                "enum": [
+                                    "contains"
+                                ]
+                            },
+                            "value": {}
+                        },
+                        "required": [
+                            "type",
+                            "property",
+                            "value"
+                        ],
+                        "additionalProperties": false
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "property": {
+                                "type": "string"
+                            },
+                            "type": {
+                                "type": "string",
+                                "enum": [
+                                    "status_code"
+                                ]
+                            },
+                            "value": {}
+                        },
+                        "required": [
+                            "type",
+                            "property",
+                            "value"
+                        ],
+                        "additionalProperties": false
+                    }
+                ]
+            }
+        }
+    },
+    "required": [
+        "name",
+        "requests",
+        "assertions"
+    ]
+}

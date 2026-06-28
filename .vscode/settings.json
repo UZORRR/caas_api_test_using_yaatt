@@ -1,0 +1,7 @@
+{
+    "yaml.schemas": {
+        "/Users/uzor/zava/caas_api_test_using_yaatt/schema.json": [
+            "**.yml"
+        ]
+    }
+}
