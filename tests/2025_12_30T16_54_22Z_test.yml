@@ -1,4 +1,5 @@
-name: CreateOrder API - Invalid patient verification
+name: CreateOrder - Invalid patient verification
+description: POST /orders should return 422 when patient verification is not-verified
 requests:
   create_order:
     method: post

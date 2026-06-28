@@ -1,4 +1,5 @@
-name: CreateOrder API - order already exists
+name: CreateOrder - order already exists
+description: POST /orders should return 200 when a valid payload is submitted for an existing patient
 requests:
   create_order:
     method: post

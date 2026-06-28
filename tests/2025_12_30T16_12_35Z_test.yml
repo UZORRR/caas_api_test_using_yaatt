@@ -1,4 +1,5 @@
-name: CreateOrder API - order created successfully
+name: CreateOrder - order created successfully
+description: POST /orders should return 201 when a valid CreateOrder payload is submitted
 requests:
   create_order:
     description: Submit a valid CreateOrder payload for patient hhPati3nt2
